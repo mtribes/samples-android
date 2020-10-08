@@ -1,4 +1,4 @@
-package com.deltatre.samples.ui.main
+package com.deltatre.samples.data
 
 object FakeData {
     val anonymous = FakeDto(

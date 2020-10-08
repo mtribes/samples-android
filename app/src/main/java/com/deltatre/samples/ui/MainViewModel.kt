@@ -1,8 +1,12 @@
-package com.deltatre.samples.ui.main
+package com.deltatre.samples.ui
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.deltatre.samples.data.FakeRepository
+import com.deltatre.samples.data.FakeRow
+import com.deltatre.samples.data.FakeUser
+import com.deltatre.samples.data.Header
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

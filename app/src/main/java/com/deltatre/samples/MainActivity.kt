@@ -1,8 +1,8 @@
 package com.deltatre.samples
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.deltatre.samples.ui.main.MainFragment
+import androidx.appcompat.app.AppCompatActivity
+import com.deltatre.samples.ui.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

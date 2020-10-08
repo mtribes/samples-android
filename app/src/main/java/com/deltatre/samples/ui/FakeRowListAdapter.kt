@@ -1,4 +1,4 @@
-package com.deltatre.samples.ui.main
+package com.deltatre.samples.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.deltatre.samples.data.FakeRow
 import com.deltatre.samples.databinding.RowItemBannerBinding
 import com.deltatre.samples.databinding.RowItemHeroBinding
 

@@ -1,4 +1,4 @@
-package com.deltatre.samples.ui.main
+package com.deltatre.samples.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,5 +1,6 @@
-package com.deltatre.samples.ui.main
+package com.deltatre.samples.data
 
+import com.deltatre.samples.ui.UiModel
 import io.reactivex.Single
 import java.util.concurrent.TimeUnit
 
@@ -25,7 +26,7 @@ class FakeRepository {
                 header = it.header,
                 fakeRows = it.fakeRows
             )
-        }.delay(1, TimeUnit.SECONDS)
+        }.delay(1, TimeUnit.SECONDS) // add a fake delay
     }
 }
 
@@ -40,6 +41,13 @@ data class FakeDto(
     val fakeRows: List<FakeRow>
 )
 
+data class Header(
+    val id: String,
+    val title: String = "",
+    val isVisible: Boolean = true,
+    val backgroundColor: String,
+    val gradientColor: String
+)
 
 // represent an item in the list
 data class FakeRow(
@@ -64,11 +72,3 @@ data class FakeRow(
         val text: String
     )
 }
-
-data class Header(
-    val id: String,
-    val title: String = "",
-    val isVisible: Boolean = true,
-    val backgroundColor: String,
-    val gradientColor: String
-)
