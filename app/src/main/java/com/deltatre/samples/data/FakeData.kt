@@ -1,11 +1,55 @@
 package com.deltatre.samples.data
 
+data class FakeUser(
+    val id: String,
+    val name: String,
+    val subscription: String
+)
+
+// fake data transfer object from the backend
+data class FakeDto(
+    val header: Header,
+    val fakeRows: List<FakeRow>
+)
+
+data class Header(
+    val id: String,
+    val title: String = "",
+    val btnTitle: String = "",
+    val isVisible: Boolean = true,
+    val backgroundColor: String,
+    val gradientColor: String
+)
+
+// represent an item in the list
+data class FakeRow(
+    val id: String,
+    val type: Type,
+    val isVisible: Boolean = true,
+    val hero: Hero? = null,
+    val banner: Banner? = null,
+) {
+    enum class Type {
+        HERO,
+        BANNER
+    }
+
+    data class Hero(
+        val imageUrl: String
+    )
+
+    data class Banner(
+        val text: String
+    )
+}
+
+// fake data representation
 object FakeData {
     val anonymous = FakeDto(
         header = Header(
             id = "0001",
-            title = "",
-            btnTitle = "Sign Out",
+            title = "Welcome",
+            btnTitle = "Sign In",
             backgroundColor = "#6F58C4",
             gradientColor = "#6200EE"
         ),
@@ -31,7 +75,7 @@ object FakeData {
         header = Header(
             id = "0001",
             title = "Hi Olivia",
-            btnTitle = "Sign In",
+            btnTitle = "Sign Out",
             backgroundColor = "#6F58C4",
             gradientColor = "#6200EE"
         ),

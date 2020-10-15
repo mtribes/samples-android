@@ -37,9 +37,11 @@ class MainFragment : Fragment() {
         with(uiModel.header) {
             btn_user_auth.text = btnTitle
             txt_user_name.text = title
+
             btn_user_auth.setOnClickListener {
                 viewModel.onBtnClick()
             }
+
             header_layout.visibility = if (this.isVisible) View.VISIBLE else View.GONE
         }
 
