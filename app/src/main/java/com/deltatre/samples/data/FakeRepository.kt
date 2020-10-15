@@ -50,6 +50,15 @@ class FakeRepository {
         }
     }
 
+    // analytics
+    fun captureClickEvent(fakeRow: FakeRow) {
+        bodySection.children.single {
+            it.id == fakeRow.id
+        }.also {
+            it.track("item/clicked")
+        }
+    }
+
     private fun mapToUiModel(isSignedInUser: Boolean, fakeDto: FakeDto? = null): UiModel {
         return UiModel(
             isSignedIn = isSignedInUser,

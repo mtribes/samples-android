@@ -9,6 +9,7 @@ class MainApplication : Application() {
             init(applicationContext)
             client.userTracking = true
             client.sessionLock = false // enable live updates
+            client.debugMode = true
         }
         super.onCreate()
     }

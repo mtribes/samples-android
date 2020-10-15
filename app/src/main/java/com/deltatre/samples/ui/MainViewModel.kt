@@ -51,7 +51,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun onItemClick(fakeRow: FakeRow) {
-        // to be implemented
+        fakeRepository.captureClickEvent(fakeRow)
     }
 
     private fun fetchForAnonUser() {
