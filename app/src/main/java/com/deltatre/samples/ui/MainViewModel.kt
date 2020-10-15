@@ -29,6 +29,10 @@ class MainViewModel : ViewModel() {
         get() = mainListLiveData.value
 
     init {
+        // subscribe to changes
+        listenToHeader()
+        listenToBody()
+
         // fetch anon user on startup
         fetchForAnonUser()
     }
@@ -72,6 +76,32 @@ class MainViewModel : ViewModel() {
                     mainListLiveData.value = it
                 }, {
                     Log.e("MainViewModel", "Error during sign in", it)
+                })
+        )
+    }
+
+    private fun listenToHeader() {
+        disposables.add(
+            fakeRepository.onHeaderChanges()
+                .subscribe({
+                    mainListLiveData.value = _state?.copy(
+                        header = it
+                    )
+                }, {
+                    Log.e("MainViewModel", "Error during Header monitoring", it)
+                })
+        )
+    }
+
+    private fun listenToBody() {
+        disposables.add(
+            fakeRepository.onBodyChanges()
+                .subscribe({
+                    mainListLiveData.value = _state?.copy(
+                        body = it
+                    )
+                }, {
+                    Log.e("MainViewModel", "Error during Body Section monitoring", it)
                 })
         )
     }
