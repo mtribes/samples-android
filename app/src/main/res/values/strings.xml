@@ -1,5 +1,3 @@
 <resources>
-    <string name="app_name">samples</string>
-    <string name="btn_text_sign_out">Sign Out</string>
-    <string name="btn_text_sign_in">Sign In</string>
+    <string name="app_name">mtribes Samples</string>
 </resources>

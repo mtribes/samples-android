@@ -5,6 +5,7 @@ object FakeData {
         header = Header(
             id = "0001",
             title = "",
+            btnTitle = "Sign Out",
             backgroundColor = "#6F58C4",
             gradientColor = "#6200EE"
         ),
@@ -13,7 +14,6 @@ object FakeData {
                 id = "x_0001",
                 type = FakeRow.Type.HERO,
                 hero = FakeRow.Hero(
-                    id = "x_x_0001",
                     imageUrl = "https://pkw.us.astcdn.com/img/sample/1=x700.jpg"
                 )
             ),
@@ -21,7 +21,6 @@ object FakeData {
                 id = "x_0002",
                 type = FakeRow.Type.BANNER,
                 banner = FakeRow.Banner(
-                    id = "x_x_0002",
                     text = "Join Us"
                 )
             )
@@ -32,6 +31,7 @@ object FakeData {
         header = Header(
             id = "0001",
             title = "Hi Olivia",
+            btnTitle = "Sign In",
             backgroundColor = "#6F58C4",
             gradientColor = "#6200EE"
         ),
@@ -40,7 +40,6 @@ object FakeData {
                 id = "x_0001",
                 type = FakeRow.Type.HERO,
                 hero = FakeRow.Hero(
-                    id = "x_x_0001",
                     imageUrl = "https://pkw.us.astcdn.com/img/sample/2=x700.jpg"
                 )
             ),
@@ -48,7 +47,6 @@ object FakeData {
                 id = "x_0002",
                 type = FakeRow.Type.BANNER,
                 banner = FakeRow.Banner(
-                    id = "x_x_0002",
                     text = "Play Now"
                 )
             )

@@ -34,20 +34,15 @@ class MainFragment : Fragment() {
     }
 
     private fun renderUi(uiModel: UiModel) {
-        if (uiModel.isSignedIn) {
-            btn_user_auth.text = getString(R.string.btn_text_sign_out)
-        } else {
-            btn_user_auth.text = getString(R.string.btn_text_sign_in)
-        }
-
         with(uiModel.header) {
+            btn_user_auth.text = btnTitle
             txt_user_name.text = title
             btn_user_auth.setOnClickListener {
                 viewModel.onBtnClick()
             }
-            header_layout.visibility = View.VISIBLE
+            header_layout.visibility = if (this.isVisible) View.VISIBLE else View.GONE
         }
 
-        listAdapter.submitList(uiModel.fakeRows)
+        listAdapter.submitList(uiModel.body)
     }
 }

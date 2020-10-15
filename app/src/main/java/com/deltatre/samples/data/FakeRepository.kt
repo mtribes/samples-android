@@ -12,7 +12,7 @@ class FakeRepository {
             UiModel(
                 isSignedIn = true,
                 header = it.header,
-                fakeRows = it.fakeRows
+                body = it.fakeRows
             )
         }.delay(1, TimeUnit.SECONDS) // add a fake delay
     }
@@ -24,7 +24,7 @@ class FakeRepository {
             UiModel(
                 isSignedIn = false,
                 header = it.header,
-                fakeRows = it.fakeRows
+                body = it.fakeRows
             )
         }.delay(1, TimeUnit.SECONDS) // add a fake delay
     }
@@ -44,6 +44,7 @@ data class FakeDto(
 data class Header(
     val id: String,
     val title: String = "",
+    val btnTitle: String = "",
     val isVisible: Boolean = true,
     val backgroundColor: String,
     val gradientColor: String
@@ -63,12 +64,10 @@ data class FakeRow(
     }
 
     data class Hero(
-        val id: String,
         val imageUrl: String
     )
 
     data class Banner(
-        val id: String,
         val text: String
     )
 }

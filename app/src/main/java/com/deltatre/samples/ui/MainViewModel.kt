@@ -11,7 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-private val fakeUser = FakeUser(
+val fakeUser = FakeUser(
     id = "2id2f459d2s5",
     name = "Olivia",
     subscription = "gold"
@@ -80,5 +80,5 @@ class MainViewModel : ViewModel() {
 data class UiModel(
     val isSignedIn: Boolean,
     val header: Header,
-    val fakeRows: List<FakeRow>
+    val body: List<FakeRow>
 )
