@@ -1,5 +1,6 @@
 package com.deltatre.samples.data
 
+// fake user object which consists `susbscription` details
 data class FakeUser(
     val id: String,
     val name: String,
@@ -12,6 +13,7 @@ data class FakeDto(
     val fakeRows: List<FakeRow>
 )
 
+// Header UI section
 data class Header(
     val id: String,
     val title: String = "",

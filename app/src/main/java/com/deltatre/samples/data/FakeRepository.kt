@@ -17,12 +17,15 @@ class FakeRepository {
     // body Section
     private val bodySection = Mtribes.collections.homepage.body
 
+    /**
+     * Using `Session.start()` to identify a user as a part of the user sign in workflow
+     */
     fun signIn(user: FakeUser): Single<UiModel> {
         return FakeApi.signIn(user)
             .zipWith(Mtribes.session.start(
                 StartOptions(
                     userId = user.id,
-                    fields = mutableMapOf("subscription" to user.subscription)
+                    fields = mutableMapOf("subscription" to user.subscription) // `subscription` is added here as a contextual property
                 )
             ), { t1, t2 -> t1 })
             .map {
@@ -30,6 +33,9 @@ class FakeRepository {
             }
     }
 
+    /**
+     * Using `Session.start()` to annonymise a user as a part of the user sign out workflow
+     */
     fun signOut(): Single<UiModel> {
         return FakeApi.signOut()
             .zipWith(Mtribes.session.start(), { t1, t2 -> t1 })
@@ -38,19 +44,29 @@ class FakeRepository {
             }
     }
 
+    /**
+     * Susbcribe/listen to `Experience` changes in real time
+     */
     fun onHeaderChanges(): Flowable<Header> {
         return headerExp.changed().map {
             mapHeader()
         }
     }
 
+    /**
+     * Susbcribe/listen to `Section` changes in real time
+     */
     fun onBodyChanges(): Flowable<List<FakeRow>> {
         return bodySection.changed().map {
             mapBody()
         }
     }
 
-    // analytics
+    /**
+     * `Experience.track()` usage where an item click event is
+     * captured on any of the experineces schuduled in the
+     * `HomepageBodySection`
+     */
     fun captureClickEvent(fakeRow: FakeRow) {
         bodySection.children.single {
             it.id == fakeRow.id

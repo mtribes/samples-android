@@ -1,6 +1,5 @@
 package com.deltatre.samples.ui
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deltatre.samples.data.FakeRepository
@@ -10,6 +9,7 @@ import com.deltatre.samples.data.Header
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 val fakeUser = FakeUser(
     id = "2id2f459d2s5",
@@ -62,7 +62,7 @@ class MainViewModel : ViewModel() {
                 .subscribe({
                     mainListLiveData.value = it
                 }, {
-                    Log.e("MainViewModel", "Error during sign out", it)
+                    Timber.e(it, "Error during sign out")
                 })
         )
     }
@@ -75,7 +75,7 @@ class MainViewModel : ViewModel() {
                 .subscribe({
                     mainListLiveData.value = it
                 }, {
-                    Log.e("MainViewModel", "Error during sign in", it)
+                    Timber.e(it, "Error during sign in")
                 })
         )
     }
@@ -88,7 +88,7 @@ class MainViewModel : ViewModel() {
                         header = it
                     )
                 }, {
-                    Log.e("MainViewModel", "Error during Header monitoring", it)
+                    Timber.e(it, "Error during Header monitoring")
                 })
         )
     }
@@ -101,7 +101,7 @@ class MainViewModel : ViewModel() {
                         body = it
                     )
                 }, {
-                    Log.e("MainViewModel", "Error during Body Section monitoring", it)
+                    Timber.e(it, "Error during Body Section monitoring")
                 })
         )
     }
