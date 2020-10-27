@@ -84,9 +84,11 @@ class MainViewModel : ViewModel() {
         disposables.add(
             fakeRepository.onHeaderChanges()
                 .subscribe({
-                    mainListLiveData.value = _state?.copy(
+                    _state?.copy(
                         header = it
-                    )
+                    )?.also { uiModel ->
+                        mainListLiveData.value = uiModel
+                    }
                 }, {
                     Timber.e(it, "Error during Header monitoring")
                 })
@@ -97,9 +99,11 @@ class MainViewModel : ViewModel() {
         disposables.add(
             fakeRepository.onBodyChanges()
                 .subscribe({
-                    mainListLiveData.value = _state?.copy(
+                    _state?.copy(
                         body = it
-                    )
+                    )?.also { uiModel ->
+                        mainListLiveData.value = uiModel
+                    }
                 }, {
                     Timber.e(it, "Error during Body Section monitoring")
                 })
