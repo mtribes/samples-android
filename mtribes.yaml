@@ -1,0 +1,8 @@
+version: 1
+org: 9b4b94f8-605a-4759-b93b-45e2894cb585
+space: e2cb0481-b524-4630-b1c3-4ee7099721b6
+spaceKey: sample
+targets:
+- platform: android
+  lang: kotlin
+  out: mtribes

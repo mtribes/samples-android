@@ -3,6 +3,9 @@ package com.deltatre.samples.data
 import io.reactivex.Single
 import java.util.concurrent.TimeUnit
 
+/**
+ * Fake API which represents sign in/ sign out work flows
+ */
 object FakeApi {
 
     fun signIn(user: FakeUser): Single<FakeDto> {

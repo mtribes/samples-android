@@ -1,6 +1,5 @@
 package com.deltatre.samples.ui
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.deltatre.samples.data.FakeRepository
@@ -10,6 +9,7 @@ import com.deltatre.samples.data.Header
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 val fakeUser = FakeUser(
     id = "2id2f459d2s5",
@@ -29,6 +29,10 @@ class MainViewModel : ViewModel() {
         get() = mainListLiveData.value
 
     init {
+        // subscribe to changes
+        listenToHeader()
+        listenToBody()
+
         // fetch anon user on startup
         fetchForAnonUser()
     }
@@ -47,7 +51,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun onItemClick(fakeRow: FakeRow) {
-        // to be implemented
+        fakeRepository.captureClickEvent(fakeRow)
     }
 
     private fun fetchForAnonUser() {
@@ -58,7 +62,7 @@ class MainViewModel : ViewModel() {
                 .subscribe({
                     mainListLiveData.value = it
                 }, {
-                    Log.e("MainViewModel", "Error during sign out", it)
+                    Timber.e(it, "Error during sign out")
                 })
         )
     }
@@ -71,7 +75,37 @@ class MainViewModel : ViewModel() {
                 .subscribe({
                     mainListLiveData.value = it
                 }, {
-                    Log.e("MainViewModel", "Error during sign in", it)
+                    Timber.e(it, "Error during sign in")
+                })
+        )
+    }
+
+    private fun listenToHeader() {
+        disposables.add(
+            fakeRepository.onHeaderChanges()
+                .subscribe({
+                    _state?.copy(
+                        header = it
+                    )?.also { uiModel ->
+                        mainListLiveData.value = uiModel
+                    }
+                }, {
+                    Timber.e(it, "Error during Header monitoring")
+                })
+        )
+    }
+
+    private fun listenToBody() {
+        disposables.add(
+            fakeRepository.onBodyChanges()
+                .subscribe({
+                    _state?.copy(
+                        body = it
+                    )?.also { uiModel ->
+                        mainListLiveData.value = uiModel
+                    }
+                }, {
+                    Timber.e(it, "Error during Body Section monitoring")
                 })
         )
     }
