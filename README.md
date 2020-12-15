@@ -1,9 +1,7 @@
-# mtribes Android samples
+# mtribes samples - Android
 
-This collection of sample projects shows how `mtribes` can be integrated with a range of Android
-applications.
-
-Each sample demonstrates how you can easily add targeting control into an existing app.
+The sample projects below show how `mtribes` can be integrated with various Android applications.
+These samples demonstrate how to easily add targeting control into an existing app.
 
 ## Samples
 
@@ -14,22 +12,22 @@ Each sample demonstrates how you can easily add targeting control into an existi
 
 ### Running
 
-Clone the project and open from Android Studio, then build and run the app on a simulator/device.
+Clone the project and open it in Android Studio, then build and run the app on a simulator or device.
 
 ### Structure
 
 Each sample contains the following files:
 
-- `samples/data/FakeRepository.kt` - contains all data related logic and mtribes related integration
-- `samples/ui/MainViewModel.kt` - contains all presentation related logic
+- `samples/data/FakeRepository.kt` - contains all data-related logic and mtribes-related integration code
+- `samples/ui/MainViewModel.kt` - contains all presentation-related logic
 - `mtribes` module - generated mtribes Space integration code
 - `samples/ui/MainFragment.kt` - contains a simple UI layout
 
 And the following UI elements:
 
-1. `Header` - displays a sign-in/out button along with a welcome message when signed in.
-2. `Hero` - displays a different image depending on whether signed in or out.
-3. `Banner` - displays a `Join Now` label when signed out, and a `Member` label when signed in.
+1. `Header` - displays a sign-in/out button along with a welcome message when signed in
+2. `Hero` - displays a different image depending on whether signed in or out
+3. `Banner` - displays a `Join Now` label when signed out, and a `Member` label when signed in
 
 `Hero` and `Banner` are moved into an mtribes `Section` to highlight the dynamic capabilities these
 can provide.
