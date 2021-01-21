@@ -64,7 +64,7 @@ class FakeRepository {
 
     /**
      * `Experience.track()` usage where an item click event is
-     * captured on any of the experineces schuduled in the
+     * captured on any of the experiences scheduled in the
      * `HomepageBodySection`
      */
     fun captureClickEvent(fakeRow: FakeRow) {
