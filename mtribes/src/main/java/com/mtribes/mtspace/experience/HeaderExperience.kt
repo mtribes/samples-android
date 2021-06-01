@@ -8,7 +8,7 @@ import com.massive.mtclient.sdk.Broker
 import com.massive.mtclient.sdk.ColorProperty
 import com.massive.mtclient.sdk.Experience
 import com.massive.mtclient.sdk.Template
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 class HeaderExperience(
     id: String,

@@ -2,9 +2,28 @@
 
 package com.mtribes.mtspace
 
+import android.content.Context
+import android.util.Log
 import com.massive.mtclient.sdk.api.model.Fallbacks
+import java.io.IOException
 
-val fallbacks = Fallbacks(
-    v = 15611,
-    json = """{"3q6rn6p":{"on":true,"sid":"ojBovxy","v":36469,"data":"{\"1\":\"https://pkw.us.astcdn.com/img/sample/1=x700.jpg\"}","pid":"yxE8Q2R"},"8x6DeEy":{"on":true,"sid":"9RDRWkq","v":14731,"data":"{\"1\":{\"opacity\":1.000,\"value\":\"#6f58c4\"},\"2\":{\"opacity\":1.000,\"value\":\"#2363ae\"}}"},"nLK0ZEJ":{"on":true,"sid":"2Po3pBb","v":35347,"data":"{\"1\":\"Banner\"}","pid":"yxE8Q2R"},"yxE8Q2R":{"on":true,"sid":"4pLMZlk","v":32271,"se":[{"id":"nLK0ZEJ","et":"NW0bo31"},{"id":"3q6rn6p","et":"VGd1POB"}]}}"""
-)
+const val FALLBACKS_ASSET_NAME = "fallbacks.json"
+const val FALLBACKS_VERSION = 39269
+
+internal fun createFallbacks(context: Context): Fallbacks {
+    return try {
+        val input = context.assets.open(FALLBACKS_ASSET_NAME)
+
+        val size = input.available()
+
+        val buffer = ByteArray(size)
+
+        input.read(buffer)
+        input.close()
+
+        Fallbacks(v = FALLBACKS_VERSION, json = String(buffer))
+    } catch (e: IOException) {
+        Log.e("Fallbacks", "fallbacks conversion failed !", e)
+        Fallbacks(v = FALLBACKS_VERSION, "")
+    }
+}

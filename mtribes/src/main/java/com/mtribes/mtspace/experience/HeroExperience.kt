@@ -3,12 +3,11 @@
 package com.mtribes.mtspace.experience
 
 import android.os.Parcelable
-import androidx.annotation.Nullable
-import kotlinx.android.parcel.Parcelize
 import com.google.gson.annotations.SerializedName
 import com.massive.mtclient.sdk.Broker
 import com.massive.mtclient.sdk.Experience
 import com.massive.mtclient.sdk.Template
+import kotlinx.parcelize.Parcelize
 
 class HeroExperience(
     id: String,

@@ -3,7 +3,6 @@ package com.deltatre.samples
 import android.app.Application
 import com.massive.mtclient.sdk.logs.MtLogger
 import com.mtribes.mtspace.Mtribes
-import com.optimizely.ab.android.sdk.OptimizelyManager
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 

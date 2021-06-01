@@ -2,12 +2,21 @@
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 
 rootProject.allprojects {
     repositories {
         maven {
             url  "https://massive.bintray.com/mtribes"
+        }
+
+        maven {
+            name = "client-android"
+            url = uri("https://maven.pkg.github.com/mtribes/client-android")
+            credentials {
+                username = "mtribes-sdk-bot"
+                password = "\u0031\u0036\u0063\u0037\u0065\u0032\u0036\u0036\u0039\u0037\u0036\u0035\u0066\u0038\u0038\u0032\u0061\u0035\u0037\u0062\u0066\u0033\u0063\u0061\u0036\u0030\u0063\u0062\u0035\u0037\u0065\u0035\u0030\u0062\u0030\u0061\u0065\u0033\u0065\u0031"
+            }
         }
     }
 }
@@ -27,10 +36,10 @@ android {
 }
 
 ext {
-    GSON_VERSION = '2.8.5'
-    RX_JAVA_VERSION = '2.2.11'
+    GSON_VERSION = '2.8.6'
+    RX_JAVA_VERSION = '2.2.21'
     KOTLIN_CORE_VERSION = '1.2.0'
-    MTRIBES_SDK_VERSION = '1.0.0-alpha.37'
+    MTRIBES_SDK_VERSION = '1.0.0-alpha.39'
 }
 
 dependencies {

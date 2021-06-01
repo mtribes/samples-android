@@ -13,23 +13,35 @@ import com.mtribes.mtspace.collection.HomepageCollection
  * The entry point into the mtribes platform via the Android SDK
  */
 object Mtribes {
+
+    private lateinit var context: Context
+
     /**
      * Client instance of an mtribes Space.
      */
-    @JvmField
-    val client = Client(apiKey = "6ce409e6860440b18f581233cd41b4ca", fallbacks = fallbacks)
+    @JvmStatic
+    val client: Client by lazy {
+        Client(
+            apiKey = "6ce409e6860440b18f581233cd41b4ca",
+            fallbacks = createFallbacks(context)
+        )
+    }
 
     /**
      * The active users session.
      */
-    @JvmField
-    val session = client.session
+    @JvmStatic
+    val session: Session by lazy {
+        client.session
+    }
 
     /**
      * mtribes Collection Template instances.
      */
-    @JvmField
-    val collections = Collections(session)
+    @JvmStatic
+    val collections by lazy {
+        Collections(session)
+    }
 
     /**
      * Entry point to the SDK startup flow.
@@ -41,7 +53,10 @@ object Mtribes {
      * @see Client.init
      */
     @JvmStatic
-    fun init(@NonNull context: Context) = client.init(context)
+    fun init(@NonNull context: Context) {
+        this.context = context
+        client.init(context)
+    }
 }
 
 class Collections internal constructor(session: Session) {
