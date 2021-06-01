@@ -12,7 +12,7 @@ These samples demonstrate how to easily add targeting control into an existing a
 
 ### Running
 
-Clone the project and open it in Android Studio, then build and run the app on a simulator or device.
+Clone the project and open it in Android Studio, then build and run the app on a simulator or device
 
 ### Structure
 
