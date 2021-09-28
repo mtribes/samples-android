@@ -15,31 +15,39 @@ class MainApplication : Application() {
             // to it but will use the extracted Application context from it.
             init(applicationContext)
 
-            // enable custom analytics
+            // Enable custom analytics
             client.userTracking = true
 
-            // enable live updates
+            // Enable live updates
             client.sessionLock = false
 
-            // enables internal SDK logs
+            // Enable internal SDK logs
             if (BuildConfig.DEBUG) {
                 Timber.plant(DebugTree())
 
                 client.logger = object : MtLogger {
-                    override fun error(tag: String, message: String, throwable: Throwable?) {
-                        Timber.e(tag, message)
-                    }
 
                     override fun info(tag: String, message: String) {
-                        Timber.i(tag, message)
+                        // Sets a one-time tag to correctly indicate the source of the log
+                        Timber.tag(tag)
+                        Timber.i(message)
                     }
 
                     override fun warn(tag: String, message: String) {
-                        Timber.w(tag, message)
+                        // Sets a one-time tag to correctly indicate the source of the log
+                        Timber.tag(tag)
+                        Timber.w(message)
+                    }
+
+                    override fun error(tag: String, message: String, throwable: Throwable?) {
+                        // Sets a one-time tag to correctly indicate the source of the log
+                        Timber.tag(tag)
+                        Timber.e(throwable, message)
                     }
                 }
             }
         }
+
         super.onCreate()
     }
 }
